@@ -1,7 +1,6 @@
 import lcm
 import time
 import torch
-import numpy as np
 from tqdm import tqdm
 from base.SimBase import SimBase
 from Config import Config
