@@ -49,14 +49,18 @@ lcm-spy
 
 - 确认可以订阅到以下消息：
 ```
-rc_state
 body_state
 lower_joint_state
+rc_state
 ```
+![来自机器人的状态消息](doc/robotState.png)
+
 - 启动user->sim2sim.py文件，按键D可以让机器人在仿真环境中正常摆动，同时对外发布关节目标信息：
 ```
 lower_joint_target
 ```
+![行走控制交互信息](doc/controlMsg.png)
+
 可以看到实物机器人与仿真环境中的机器人同步运动
 ### 1.5 Sim2real测试
 1. 初始化：运行sim2real.py，机器人会进入预定初始化状态。
