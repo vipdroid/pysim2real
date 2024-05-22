@@ -25,23 +25,35 @@ ssh root@192.168.55.20
 cd /home/debug/
 ./BodyLower
 ```
-3. 查看遥控器服务启动状态
-```
+
+3. 查看机器人LCM广播域udpm
+- 查看遥控器服务启动状态
+```text
 sudo systemctl status remoteCtrl.service
 ```
 确认状态是否正常启动
-4. 可视化lcm消息观测
+
+![遥控服务状态](doc/remoteCtrlStatus.png)
+- 复制上面的内容并配置到需要使用lcm通信或lcm-spy图形化显示的主机环境中
+```
+export LCM_DEFAULT_URL=udpm://239.255.76.67:7667?ttl=255
+```
+- 根据上面的udpm修改sim2real和sim2sim文件中main函数中的udpm链接
+
+
+- 启动lcm-spy可视化lcm消息观测
 ```
 export CLASSPATH=lcmCtrl.jar
 lcm-spy
-```   
-确认可以订阅到以下消息：
+```
+
+- 确认可以订阅到以下消息：
 ```
 rc_state
 body_state
 lower_joint_state
 ```
-5. 启动user->sim2sim.py文件，按键D可以让机器人在仿真环境中正常摆动，同时对外发布关节目标信息：
+- 启动user->sim2sim.py文件，按键D可以让机器人在仿真环境中正常摆动，同时对外发布关节目标信息：
 ```
 lower_joint_target
 ```
